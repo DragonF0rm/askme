@@ -1,0 +1,27 @@
+{%extends "base_unauthorized.html"%}
+{%load static%}
+
+
+{%block title%}List of questions{%endblock%}
+{%block content%}
+<div class="media">
+	<img class="mr-3" src="{%static 'img/64x64.png'%}" alt="Generic placeholder image">
+	<div class="media-body">
+		<h5 class="mt-0">Media heading</h5>
+		Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+	</div>
+
+	{%for question in question %}
+		<div class="alert alert-primary">
+			<div class="media mb-3">
+				<img class="mr-3" src="{% static "img/64x64.png" %}">
+				<div class="media-body">
+					<h5 class="mt-0">
+						<a href="{{ question.get_absolute_url }}">{{ question.title }}</a>
+					</h5>
+					<span>{{ question.text }}</span>
+				</div>
+			</div>
+		</div>
+</div>
+{%endblock%}

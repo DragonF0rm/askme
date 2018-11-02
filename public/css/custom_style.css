@@ -1,0 +1,55 @@
+.collapse {
+	visibility: hidden;
+}
+.collapse.in {
+	visibility: visible;
+}
+.collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	-webkit-transition-property: height, visibility;
+	transition-property: height, visibility;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+	-webkit-transition-timing-function: ease;
+	transition-timing-function: ease;
+}
+
+.collapsing.width {
+	-webkit-transition-property: width, visibility;
+	transition-property: width, visibility;
+	width: 0;
+	height: auto;
+}
+
+.collapse.show {
+	visibility: visible;
+}
+
+.custom-list-item {
+	list-style-type: none;
+}
+
+.custom-link-btn {
+	outline: none;
+}
+
+.custom-svg-img {
+	fill: white;
+}
+
+.custom-link-btn:hover .custom-svg-img {
+	fill: #52E8FF;
+}
+
+#navbarSupportedContent {
+	visibility: visible;
+}
+
+@include media-breakpoint-down(md) {
+
+	#navbarSupportedContent {
+		visibility: hidden;
+	}
+}
