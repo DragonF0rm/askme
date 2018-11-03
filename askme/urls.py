@@ -1,5 +1,7 @@
 """askme URL Configuration
 
+path('new/<int:pk>', views.new_questions, name='new_questions')
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
 Examples:
@@ -19,6 +21,5 @@ from questions import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.hello),
-    path('new/<int:pk>', views.new_questions, name='new_questions')
+    path('', views.index),
 ]

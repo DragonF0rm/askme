@@ -5,11 +5,12 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def hello(request):
-    return render(request,"list_questions.html")
+def index(request):
+    #TODO создать список вопросов
+    #TODO использовать пагинацию (класс Pagination)
+    return render(request,"index.html")
 
 #def new_questions(request):
-    #TODO использовать пагинацию (класс Pagination)
     #questions = Question.object.all().order_by{'-created_at')
     #return render(requests, 'list_questions.html', {
        # 'questions': questions
@@ -19,5 +20,4 @@ def hello(request):
     #question = Question.objects.get(pk=pk)
     #return render(request, 'question.html', {
         #'questions': questions
-    #})
-~                     
+    #})                     

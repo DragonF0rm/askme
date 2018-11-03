@@ -47,9 +47,20 @@
 	visibility: visible;
 }
 
+.custom-footer {
+	margin-top: auto;
+}
+
+.custom-body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
 @include media-breakpoint-down(md) {
 
 	#navbarSupportedContent {
 		visibility: hidden;
 	}
+
 }
