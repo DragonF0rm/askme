@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
+from .models import Question
 
-# Create your views here.
 
 def index(request):
-    #TODO создать список вопросов
     #TODO использовать пагинацию (класс Pagination)
-    return render(request,"index.html")
+    question_list = Question.objects.order_by('-created_at')
+    return render(request, 'index.html', {'question_list': question_list})
 
 #def new_questions(request):
     #questions = Question.object.all().order_by{'-created_at')
