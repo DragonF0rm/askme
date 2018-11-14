@@ -1,33 +1,34 @@
-{%extends "base_unauthorized.html"%}
-{%load static%}
+{% extends "base.html" %}
+{% load static %}
 
 
-{%block title%}Askme{%endblock%}
-{%block content%}
-    <div class="card h-100">
-        <div class="card-body">
-            <h3 class="card-title">Questions</h3>
-            <div class="list-group list-group-flush">
-                {% for question in question_list %}
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"><!--TODO-->
-                        <div class="d-flex flex-column-reverse flex-md-row">
-                            <div class="d-flex flex-column">
-                                <img class="d-none d-md-block" src= "{{ question.author.profile.avatar.path }}" alt="Users avatar"/>
-                                <h6 class="badge badge-info">Votes: NULL</h6> <!--TODO-->
-                                <h6 class="badge badge-info">Answers: {{ get_answers_count }}</h6> <!--TODO-->
-                                <h6 class="badge badge-info">Views: {{ question.views }}</h6>
-                            </div>
-                            <div class="d-flex flex-column pl-3">
-                                <h5>{{ question.title }}</h5>
-                                <p class="d-none d-md-block"> {{ question.text }}</p> <!--TODO-->
-                                <div class="d-inline">
-                                    <h6 class="badge badge-primary float-right">Asked by {{ question.author.username }}</h6>
-                                </div>
-                            </div>
+{% block title %}Askme{% endblock %}
+{% block auth %}
+    {% include "unauthorized.html" %}
+{% endblock %}
+{% block content %}
+    <h3 class="card-title">Questions</h3>
+    <div class="list-group list-group-flush">
+        {% for question in question_list %}
+            <a href="{% url 'one_question' question.pk %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex flex-column-reverse flex-md-row">
+                    <div class="d-flex flex-column align-items-center">
+                        <img class="d-none d-md-block border mb-2" src= "{% static 'img/64x64.png' %}" width="64px" height="64px" alt="Users avatar"/>
+                        {% include "voter.html" with votable=question only %}
+                        <h6 class="badge badge-info">Votes: NULL</h6> <!--TODO-->
+                        <h6 class="badge badge-info">Answers: {{ get_answers_count }}</h6> <!--TODO fix-->
+                        <h6 class="badge badge-info">Views: {{ question.views }}</h6>
+                    </div>
+                    <div class="d-flex flex-column pl-3">
+                        <h5>{{ question.title }}</h5>
+                        <p class="d-none d-md-block"> {{ question.get_text_preview }}</p>
+                        <div class="d-inline">
+                            <h6 class="badge badge-primary float-right">Asked by {{ question.author.username }}
+                                <br class="d-md-none"/>on {{ question.get_creation_time }}</h6>
                         </div>
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
     </div>
-{%endblock%}
+{% endblock %}

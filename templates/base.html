@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -12,16 +12,14 @@
 		<link rel="icon" href="{%static 'img/favicon.ico'%}">
 
 		<title>
-			{%block title%}
-			base.html
-			{%endblock%}
+			{% block title %}base.html{% endblock %}
 		</title>
 	</head>
 	<body class="custom-body">
 		<header class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="{%static 'img/64x64.png'%}" width="36" height="36" alt="Site logo">
+					<img src="{% static 'img/64x64.png' %}" width="36" height="36" alt="Site logo">
 					<span>Logo</span>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,20 +31,24 @@
     							<input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search" autofocus>
 						</div>
 						<a class="custom-link-btn mr-2" role="button" data-toggle="collapse" href="#search_form" aria-expanded="true" aria-controls="search_form" aria-label="Search button">
-						<svg width="24" height="24" viewBox="0 0 24 24" role="img">
+							<svg width="24" height="24" viewBox="0 0 24 24" role="img">
 								<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" class="custom-svg-img"/>
 								<path d="M0 0h24v24H0z" fill="none"/>
 							</svg>
 						</a>
 		  			</form>
-					{%block auth%}{%endblock%}
+					{% block auth %}{% endblock %}
 				</div>
 			</div>
 		</header>
 		<main class="container mt-3">
 			<div class="row">
 				<div class="col-12 col-md-8 pr-md-0 pb-3">
-					{%block content%}{%endblock%}
+					<div class="card h-100">
+						<div class="card-body">
+							{% block content %}{% endblock %}
+						</div>
+					</div>
 				</div>
 				<div class="col-12 col-md-4 pb-3">
 					<div class="card">
@@ -86,8 +88,8 @@
 		</footer>
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-		<script src="{%static 'js/jquery-3.3.1.slim.min.js'%}"></script>
-		<script src="{%static 'js/popper.min.js'%}"></script>
-		<script src="{%static 'js/bootstrap.min.js'%}"></script>
+		<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	</body>
 </html>

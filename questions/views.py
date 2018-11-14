@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from .models import Question
 
 
@@ -9,14 +10,7 @@ def index(request):
     question_list = Question.objects.order_by('-created_at')
     return render(request, 'index.html', {'question_list': question_list})
 
-#def new_questions(request):
-    #questions = Question.object.all().order_by{'-created_at')
-    #return render(requests, 'list_questions.html', {
-       # 'questions': questions
-   # })
 
-#def question(request,pk):
-    #question = Question.objects.get(pk=pk)
-    #return render(request, 'question.html', {
-        #'questions': questions
-    #})                     
+def one_question(request, question_pk):
+    question = get_object_or_404(Question, pk=question_pk)
+    return render(request, 'one_question.html', {'question': question})

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Askme{% endblock %}
+{% block auth %}
+    {% include "unauthorized.html" %}
+{% endblock %}
+{% block content %}
+    <h3 class="card-title">{{ question.title }}</h3>
+    <div class="col">
+        <div class="d-flex flex-column flex-grow-0 float-left mr-2 mb-2">
+            <img class="d-none d-md-block border" src= "{% static 'img/64x64.png' %}"
+                 width="150px" height="150px" alt="Users avatar"/>
+            <!--{% include "voter.html" %}-->
+        </div>
+        <p>{{ question.text }}</p>
+        <h4 class="card-title">Answers</h4>
+
+    </div>
+{% endblock %}
